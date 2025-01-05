@@ -81,7 +81,7 @@ def start_search():
         time.sleep(5)  # Increase wait time to ensure the page is fully loaded
 
         # Save screenshot for each keyword
-        driver.save_screenshot(f"ccfsSearchResults_{keyword}.png")
+        # driver.save_screenshot(f"ccfsSearchResults_{keyword}.png")
 
         html_content = driver.page_source
 
