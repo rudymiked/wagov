@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCFS Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">CCFS Search</h1>
+        <form id="search-form" method="POST" action="/" target="download-frame">
+            <div class="form-group">
+                <label for="keywords">Keywords (separated by commas):</label>
+                <input type="text" class="form-control" id="keywords" name="keywords" required>
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start date (MM/DD/YYYY):</label>
+                <input type="text" class="form-control" id="start_date" name="start_date" required>
+            </div>
+            <button type="submit" class="btn btn-primary" id="start-button" disabled>Start</button>
+        </form>
+        <div id="loading-spinner" class="text-center mt-3" style="display: none;">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <iframe id="download-frame" name="download-frame" style="display: none;"></iframe>
+        <script>
+            function checkInputs() {
+                const keywords = document.getElementById('keywords').value.trim();
+                const startDate = document.getElementById('start_date').value.trim();
+                const startButton = document.getElementById('start-button');
+                startButton.disabled = !(keywords && startDate);
+            }
+
+            document.getElementById('keywords').addEventListener('input', checkInputs);
+            document.getElementById('start_date').addEventListener('input', checkInputs);
+
+            document.getElementById('search-form').addEventListener('submit', function() {
+                document.getElementById('loading-spinner').style.display = 'block';
+            });
+
+            document.getElementById('download-frame').addEventListener('load', function() {
+                document.getElementById('loading-spinner').style.display = 'none';
+            });
+        </script>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info mt-3">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <a href="{{ url_for('download_file', filename='ccfsSearchResults.csv') }}" class="btn btn-success mt-3">Download CSV</a>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
