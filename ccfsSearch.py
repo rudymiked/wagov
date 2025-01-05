@@ -1,14 +1,13 @@
-import tkinter as tk
-from tkinter import messagebox
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 import time
 from bs4 import BeautifulSoup
 import csv
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import threading
+import os
+
+app = Flask(__name__, template_folder='.')
+app.secret_key = 'your_secret_key'
 
 class Business:
     def __init__(self, name, ubi, business_type, address, agent_name, status):
@@ -22,9 +21,8 @@ class Business:
     def __repr__(self):
         return f"Business(name={self.name}, ubi={self.ubi}, business_type={self.business_type}, address={self.address}, agent_name={self.agent_name}, status={self.status})"
 
-def start_search():
-    keywords = entry.get().split(',')
-    keywords = [keyword.strip() for keyword in keywords]
+def start_search(keywords, start_date):
+    keywords = [keyword.strip() for keyword in keywords.split(',')]
 
     # Initialize the Chrome driver
     options = webdriver.ChromeOptions()
@@ -34,14 +32,10 @@ def start_search():
     driver = webdriver.Chrome(options=options)
 
     # Open the website
-    driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga*MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV*MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
+    driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
     # Wait for the page to load
-    # Wait for the page to load by checking for the presence of a specific element
-
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "ddlSelection"))
-    )
+    time.sleep(5)
 
     # List to store results
     businesses = []
@@ -55,33 +49,16 @@ def start_search():
         business_name.clear()  # Clear the input field before entering new keyword
         business_name.send_keys(keyword)
 
-        start_date = driver.find_element(By.ID, "txtStartDateOfIncorporation")
-        start_date.clear()  # Clear the input field before entering new date
-        # Ensure the date is in the format dd/mm/yyyy
-        raw_date = start_date_entry.get()
-
-        try:
-            parsed_date = time.strptime(raw_date, "%d/%m/%Y")
-            formatted_date = time.strftime("%d/%m/%Y", parsed_date)
-        except ValueError:
-            try:
-                parsed_date = time.strptime(raw_date, "%d/%m/%y")
-                formatted_date = time.strftime("%d/%m/%Y", parsed_date)
-            except ValueError:
-                messagebox.showerror("Invalid Date", "Please enter a valid date in the format dd/mm/yyyy or dd/mm/yy.")
-                return
-
-        start_date.send_keys(formatted_date)
+        start_date_field = driver.find_element(By.ID, "txtStartDateOfIncorporation")
+        start_date_field.clear()  # Clear the input field before entering new date
+        start_date_field.send_keys(start_date)
 
         # Click the "Search" button
         search_button = driver.find_element(By.ID, "btnSearch")
         search_button.click()
 
         # Wait for the results to load
-        time.sleep(5)  # Increase wait time to ensure the page is fully loaded
-
-        # Save screenshot for each keyword
-        # driver.save_screenshot(f"ccfsSearchResults_{keyword}.png")
+        time.sleep(10)  # Increase wait time to ensure the page is fully loaded
 
         html_content = driver.page_source
 
@@ -109,14 +86,16 @@ def start_search():
             print(f"No table found for keyword: {keyword}")
 
         # Go back to the search page for the next keyword
-        driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga*MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV*MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
+        driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
         time.sleep(3)
 
     # Close the browser
     driver.quit()
 
     # Save results to a CSV file
-    with open("ccfsSearchResults.csv", "w", newline='') as csvfile:
+    csv_filename = "ccfsSearchResults.csv"
+    csv_filepath = os.path.join(os.getcwd(), csv_filename)
+    with open(csv_filepath, "w", newline='') as csvfile:
         fieldnames = ['name', 'ubi', 'business_type', 'address', 'agent_name', 'status']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -131,67 +110,28 @@ def start_search():
                 'status': business.status
             })
 
-    # Show a message box with the results
-    messagebox.showinfo("Search Complete", f"Search complete. {len(businesses)} businesses found.\nInformation saved here: ccfsSearchResults.csv")
+    return csv_filepath
 
-def update_spinner():
-    while searching:
-        for char in "|/-\\":
-            spinner_label.config(text=char)
-            time.sleep(0.1)
-            root.update_idletasks()
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        keywords = request.form['keywords']
+        start_date = request.form['start_date']
+        if not keywords or not start_date:
+            flash('Please enter both keywords and start date.')
+            return redirect(url_for('index'))
+        try:
+            csv_filepath = start_search(keywords, start_date)
+            flash('Search complete. Click the link below to download the results.')
+            return redirect(url_for('download_file', filename=os.path.basename(csv_filepath)))
+        except Exception as e:
+            flash(f'An error occurred: {str(e)}')
+        return redirect(url_for('index'))
+    return render_template('index.html')
 
-def start_search_with_spinner():
-    global searching
-    searching = True
-    start_button.config(state=tk.DISABLED)  # Disable the start button
-    spinner_thread = threading.Thread(target=update_spinner)
-    spinner_thread.start()
-    search_thread = threading.Thread(target=run_search)
-    search_thread.start()
+@app.route('/download/<filename>')
+def download_file(filename):
+    return send_file(filename, as_attachment=True)
 
-def run_search():
-    start_search()
-    global searching
-    searching = False
-    spinner_label.config(text="")
-    start_button.config(state=tk.NORMAL)  # Enable the start button
-
-def close_app():
-    root.destroy()
-
-###### UI CODE ######
-
-# Create the main window
-root = tk.Tk()
-root.title("CCFS Search")
-
-# Create and place the widgets
-label = tk.Label(root, text="Keywords (separated by commas):")
-label.pack(pady=10, padx=20)
-
-searching = False
-entry = tk.Entry(root, width=50)
-entry.pack(pady=10, padx=20)
-
-start_date_label = tk.Label(root, text="Start date (MM/DD/YYYY):")
-start_date_label.pack(pady=10, padx=20)
-start_date_label.pack(pady=10)
-
-start_date_entry = tk.Entry(root, width=50)
-start_date_entry.pack(pady=10, padx=20)
-
-spinner_label = tk.Label(root, text="", font=("Helvetica", 16))
-spinner_label.pack(pady=10)
-
-button_frame = tk.Frame(root)
-button_frame.pack(pady=10)
-
-start_button = tk.Button(button_frame, text="Start", command=start_search_with_spinner)
-start_button.pack(side=tk.LEFT, padx=5)
-
-close_button = tk.Button(button_frame, text="Close", command=close_app)
-close_button.pack(side=tk.LEFT, padx=5)
-
-# Run the application
-root.mainloop()
+if __name__ == '__main__':
+    app.run(debug=True)
