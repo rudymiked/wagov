@@ -169,12 +169,10 @@ root.title("CCFS Search")
 # Create and place the widgets
 label = tk.Label(root, text="Keywords (separated by commas):")
 label.pack(pady=10, padx=20)
-label.pack(pady=10)
 
 searching = False
 entry = tk.Entry(root, width=50)
 entry.pack(pady=10, padx=20)
-entry.pack(pady=10)
 
 start_date_label = tk.Label(root, text="Start date (MM/DD/YYYY):")
 start_date_label.pack(pady=10, padx=20)
@@ -182,7 +180,6 @@ start_date_label.pack(pady=10)
 
 start_date_entry = tk.Entry(root, width=50)
 start_date_entry.pack(pady=10, padx=20)
-start_date_entry.pack(pady=10)
 
 spinner_label = tk.Label(root, text="", font=("Helvetica", 16))
 spinner_label.pack(pady=10)
