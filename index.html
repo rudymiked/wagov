@@ -26,6 +26,24 @@
             </div>
         </div>
         <iframe id="download-frame" name="download-frame" style="display: none;"></iframe>
+        <div id="results-table" class="mt-5" style="display: none;">
+            <h2 class="text-center">Search Results</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>UBI</th>
+                        <th>Business Type</th>
+                        <th>Address</th>
+                        <th>Agent Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                </tbody>
+            </table>
+            <a href="{{ url_for('download_file', filename='ccfsSearchResults.csv') }}" class="btn btn-success mt-3">Download CSV</a>
+        </div>
         <script>
             function checkInputs() {
                 const keywords = document.getElementById('keywords').value.trim();
@@ -43,7 +61,30 @@
 
             document.getElementById('download-frame').addEventListener('load', function() {
                 document.getElementById('loading-spinner').style.display = 'none';
+                fetchResults();
             });
+
+            function fetchResults() {
+                fetch('/results')
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultsBody = document.getElementById('results-body');
+                        resultsBody.innerHTML = '';
+                        data.forEach(business => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${business.name}</td>
+                                <td>${business.ubi}</td>
+                                <td>${business.business_type}</td>
+                                <td>${business.address}</td>
+                                <td>${business.agent_name}</td>
+                                <td>${business.status}</td>
+                            `;
+                            resultsBody.appendChild(row);
+                        });
+                        document.getElementById('results-table').style.display = 'block';
+                    });
+            }
         </script>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -52,7 +93,6 @@
                         <p>{{ message }}</p>
                     {% endfor %}
                 </div>
-                <a href="{{ url_for('download_file', filename='ccfsSearchResults.csv') }}" class="btn btn-success mt-3">Download CSV</a>
             {% endif %}
         {% endwith %}
     </div>

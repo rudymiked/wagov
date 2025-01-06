@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, send_file
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -21,7 +21,10 @@ class Business:
     def __repr__(self):
         return f"Business(name={self.name}, ubi={self.ubi}, business_type={self.business_type}, address={self.address}, agent_name={self.agent_name}, status={self.status})"
 
+businesses = []
+
 def start_search(keywords, start_date):
+    global businesses
     keywords = [keyword.strip() for keyword in keywords.split(',')]
 
     # Initialize the Chrome driver
@@ -122,12 +125,17 @@ def index():
             return redirect(url_for('index'))
         try:
             csv_filepath = start_search(keywords, start_date)
-            flash('Search complete. Click the link below to download the results.')
-            return redirect(url_for('download_file', filename=os.path.basename(csv_filepath)))
+            flash('Search complete. Results are displayed below.')
+            return redirect(url_for('index'))
         except Exception as e:
             flash(f'An error occurred: {str(e)}')
         return redirect(url_for('index'))
     return render_template('index.html')
+
+@app.route('/results')
+def results():
+    global businesses
+    return jsonify([business.__dict__ for business in businesses])
 
 @app.route('/download/<filename>')
 def download_file(filename):
