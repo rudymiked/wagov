@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 import csv
 import os
 import concurrent.futures
+from datetime import datetime
 
 app = Flask(__name__, template_folder='.')
 app.secret_key = 'your_secret_key'
@@ -118,7 +119,10 @@ def index():
         except Exception as e:
             flash(f'An error occurred: {str(e)}')
         return redirect(url_for('index'))
-    return render_template('index.html')
+    
+    # Get the last modified time of the app.py file
+    last_modified_time = datetime.fromtimestamp(os.path.getmtime(__file__)).strftime('%Y-%m-%d %H:%M:%S')
+    return render_template('index.html', last_modified_time=last_modified_time)
 
 @app.route('/results')
 def results():
