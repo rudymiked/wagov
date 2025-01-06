@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 from bs4 import BeautifulSoup
 import csv
 import os
+import concurrent.futures
 
 app = Flask(__name__, template_folder='.')
 app.secret_key = 'your_secret_key'
@@ -23,56 +26,41 @@ class Business:
 
 businesses = []
 
-def start_search(keywords, start_date):
-    global businesses
-    keywords = [keyword.strip() for keyword in keywords.split(',')]
-
-    # Initialize the Chrome driver
+def fetch_data(keyword, start_date):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--remote-debugging-port=9222')
     driver = webdriver.Chrome(options=options)
 
-    # Open the website
-    driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
+    try:
+        driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
-    # Wait for the page to load
-    time.sleep(5)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ddlSelection")))
 
-    # List to store results
-    businesses = []
-
-    for keyword in keywords:
-        # Fill in the search form
         search_type = driver.find_element(By.ID, "ddlSelection")
         search_type.send_keys("Contains")
 
         business_name = driver.find_element(By.ID, "txtOrgname")
-        business_name.clear()  # Clear the input field before entering new keyword
+        business_name.clear()
         business_name.send_keys(keyword)
 
         start_date_field = driver.find_element(By.ID, "txtStartDateOfIncorporation")
-        start_date_field.clear()  # Clear the input field before entering new date
+        start_date_field.clear()
         start_date_field.send_keys(start_date)
 
-        # Click the "Search" button
         search_button = driver.find_element(By.ID, "btnSearch")
         search_button.click()
 
-        # Wait for the results to load
-        time.sleep(10)  # Increase wait time to ensure the page is fully loaded
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.table-striped")))
 
         html_content = driver.page_source
-
-        # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(html_content, 'html.parser')
-
-        # Find the table containing the business data
         table = soup.find('table', {'class': 'table table-striped table-responsive'})
 
         if table:
-            # Iterate over the rows of the table (excluding the header row)
             for row in table.find_all('tr')[1:]:
                 cells = row.find_all('td')
                 if len(cells) >= 6:
@@ -84,18 +72,18 @@ def start_search(keywords, start_date):
                     status = cells[5].text.strip() if cells[5].text.strip() else "N/A"
                     business = Business(name, ubi, business_type, address, agent_name, status)
                     businesses.append(business)
-                    print(f"Added business: {business}")  # Debug print
-        else:
-            print(f"No table found for keyword: {keyword}")
+                    print(f"Added business: {business}")
+    finally:
+        driver.quit()
 
-        # Go back to the search page for the next keyword
-        driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
-        time.sleep(3)
+def start_search(keywords, start_date):
+    global businesses
+    businesses = []
 
-    # Close the browser
-    driver.quit()
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = [executor.submit(fetch_data, keyword, start_date) for keyword in keywords]
+        concurrent.futures.wait(futures)
 
-    # Save results to a CSV file
     csv_filename = "ccfsSearchResults.csv"
     csv_filepath = os.path.join(os.getcwd(), csv_filename)
     with open(csv_filepath, "w", newline='') as csvfile:
@@ -124,7 +112,7 @@ def index():
             flash('Please enter both keywords and start date.')
             return redirect(url_for('index'))
         try:
-            csv_filepath = start_search(keywords, start_date)
+            csv_filepath = start_search(keywords.split(','), start_date)
             flash('Search complete. Results are displayed below.')
             return redirect(url_for('index'))
         except Exception as e:
