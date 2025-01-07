@@ -61,15 +61,11 @@ def start_search():
         raw_date = start_date_entry.get()
 
         try:
-            parsed_date = time.strptime(raw_date, "%d/%m/%Y")
-            formatted_date = time.strftime("%d/%m/%Y", parsed_date)
+            parsed_date = time.strptime(raw_date, "%m/%d/%Y")
+            formatted_date = time.strftime("%m/%d/%Y", parsed_date)
         except ValueError:
-            try:
-                parsed_date = time.strptime(raw_date, "%d/%m/%y")
-                formatted_date = time.strftime("%d/%m/%Y", parsed_date)
-            except ValueError:
-                messagebox.showerror("Invalid Date", "Please enter a valid date in the format dd/mm/yyyy or dd/mm/yy.")
-                return
+            messagebox.showerror("Invalid Date", "Please enter a valid date in the format mm/dd/yyyy.")
+            return
 
         start_date.send_keys(formatted_date)
 
@@ -78,7 +74,7 @@ def start_search():
         search_button.click()
 
         # Wait for the results to load
-        time.sleep(5)  # Increase wait time to ensure the page is fully loaded
+        time.sleep(4)
 
         # Save screenshot for each keyword
         # driver.save_screenshot(f"ccfsSearchResults_{keyword}.png")
