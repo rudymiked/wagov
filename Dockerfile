@@ -11,16 +11,6 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     unzip \
     curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Add Google's official GPG key
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-
-# Set up the Chrome repository
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-
-# Install Chrome
-RUN apt-get update && apt-get install -y \
     google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
@@ -43,10 +33,10 @@ RUN python -m venv myenv
 ENV PATH="/app/myenv/bin:$PATH"
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN /app/myenv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Expose port 5000 for the Flask app
 EXPOSE 5000
 
 # Run the Flask app with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "600", "app:app"]
+CMD ["/app/myenv/bin/gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "600", "app:app"]
