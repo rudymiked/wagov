@@ -2,8 +2,8 @@
 FROM python:3.12-slim
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -37,6 +37,10 @@ WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 COPY . /app/
+
+# Create and activate virtual environment
+RUN python -m venv myenv
+ENV PATH="/app/myenv/bin:$PATH"
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt

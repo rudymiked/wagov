@@ -4,12 +4,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 from bs4 import BeautifulSoup
+from datetime import datetime
+import time
 import csv
 import os
 import concurrent.futures
-from datetime import datetime
 
 app = Flask(__name__, template_folder='.')
 app.secret_key = 'your_secret_key'
