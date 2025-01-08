@@ -30,6 +30,7 @@ RUN python -m venv myenv
 ENV PATH="/app/myenv/bin:$PATH"
 
 # Install Python dependencies
+COPY requirements.txt .
 RUN /app/myenv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Expose port 5000 for the Flask app
