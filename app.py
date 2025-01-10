@@ -27,6 +27,7 @@ class Business:
 
 businesses = []
 h3_text = ""
+csv_filename = ""
 
 def fetch_data():
     options = webdriver.ChromeOptions()
@@ -125,8 +126,13 @@ def start_search(keywords, start_date):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global businesses
+    global businesses, csv_filename
     last_modified_time = datetime.fromtimestamp(os.path.getmtime(__file__)).strftime('%Y-%m-%d %H:%M:%S')
+
+    # Generate a unique filename with a timestamp
+    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    csv_filename = f"ccfsSearchResults_{timestamp}.csv"
+    csv_filepath = os.path.join(os.getcwd(), csv_filename)
 
     if request.method == 'POST':
         keywords = request.form['keywords']
@@ -141,9 +147,6 @@ def index():
             businesses = start_search([keyword.strip() for keyword in keywords.split(',')], start_date)
             print(f'Businesses: {businesses}')
             
-            # Write businesses to CSV file
-            csv_filename = f"ccfsSearchResults.csv"
-            csv_filepath = os.path.join(os.getcwd(), csv_filename)
             with open(csv_filepath, "w", newline='') as csvfile:
                 fieldnames = ['name', 'ubi', 'business_type', 'address', 'agent_name', 'status']
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -159,7 +162,7 @@ def index():
                     })
 
             flash('Search complete. Results are displayed below.')
-            return render_template('index.html', last_modified_time=last_modified_time, title="Search Results", businesses=businesses)
+            return render_template('index.html', last_modified_time=last_modified_time, title="Search Results", businesses=businesses, csv_filename=csv_filename)
         except Exception as e:
             print(f'An error occurred: {str(e)}')
             flash(f'An error occurred: {str(e)}')
@@ -168,12 +171,15 @@ def index():
         h3_text = fetch_data()
     
     # Get the last modified time of the app.py file
-    return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses)
+    return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses,csv_filename=csv_filename)
 
 @app.route('/results')
 def results():
-    global businesses
-    return jsonify([business.__dict__ for business in businesses])
+    global businesses, csv_filename
+    return jsonify({
+        'businesses': [business.__dict__ for business in businesses],
+        'csv_filename': csv_filename
+    })
 
 @app.route('/download/<filename>')
 def download_file(filename):

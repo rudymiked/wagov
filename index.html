@@ -42,7 +42,7 @@
                 <tbody id="results-body">
                 </tbody>
             </table>
-            <a href="{{ url_for('download_file', filename='ccfsSearchResults.csv') }}" class="btn btn-success mt-3">Download CSV</a>
+            <a id="download-link" href="#" class="btn btn-success mt-3">Download CSV</a>
         </div>
         <script>
             function checkInputs() {
@@ -70,7 +70,7 @@
                     .then(data => {
                         const resultsBody = document.getElementById('results-body');
                         resultsBody.innerHTML = '';
-                        data.forEach(business => {
+                        data.businesses.forEach(business => {
                             const row = document.createElement('tr');
                             row.innerHTML = `
                                 <td>${business.name}</td>
@@ -83,6 +83,10 @@
                             resultsBody.appendChild(row);
                         });
                         document.getElementById('results-table').style.display = 'block';
+
+                        // Update the download link with the new filename
+                        const downloadLink = document.getElementById('download-link');
+                        downloadLink.href = `/download/${data.csv_filename}`;
                     });
             }
         </script>
