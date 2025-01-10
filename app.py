@@ -137,6 +137,7 @@ def index():
         try:
             print(f'Keywords: {keywords}')
             print(f'Start Date: {start_date}')
+            businesses.clear()
             businesses = start_search([keyword.strip() for keyword in keywords.split(',')], start_date)
             print(f'Businesses: {businesses}')
             
