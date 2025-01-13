@@ -38,7 +38,7 @@ def initialize_driver():
     options.add_argument('--remote-debugging-port=9222') 
     
     # Correct usage of 
-    ChromeDriverManager service = Service() 
+    service = Service()
     driver = webdriver.Chrome(service=service, options=options)
     return driver
 
