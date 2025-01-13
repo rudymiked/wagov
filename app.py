@@ -95,9 +95,9 @@ def start_search(keywords, start_date):
             search_button = driver.find_element(By.ID, "btnSearch")
             search_button.click()
 
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "table.table-striped")))
+            WebDriverWait(driver, 10).until( lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)") )
 
-            time.sleep(2)
+            time.sleep(1)
 
             html_content = driver.page_source
             soup = BeautifulSoup(html_content, 'html.parser')
