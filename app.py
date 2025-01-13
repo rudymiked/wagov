@@ -29,18 +29,22 @@ businesses = []
 h3_text = ""
 csv_filename = ""
 
-def fetch_data():
+def initialize_driver():
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--remote-debugging-port=9222')
-    
     # Correct usage of ChromeDriverManager
-    service = Service()
+    service = Service("chromedriver")
     driver = webdriver.Chrome(service=service, options=options)
+    return driver
 
+driver = initialize_driver()  # Initialize the driver once
+
+def fetch_title():
+    global h3_text
     try:
         driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
@@ -56,24 +60,9 @@ def fetch_data():
     except Exception as e:
         print(f"An error occurred: {e}")
         h3_text = "Error occurred"
-    finally:
-        driver.quit()
-
-    return h3_text
 
 def start_search(keywords, start_date):
     global businesses
-
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9222')
-    
-    # Correct usage of ChromeDriverManager
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
 
     try:
         for keyword in keywords:
@@ -119,10 +108,6 @@ def start_search(keywords, start_date):
 
     except Exception as e:
         print(f"An error occurred: {e}")
-    finally:
-        driver.quit()
-
-    return businesses
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -168,10 +153,10 @@ def index():
             flash(f'An error occurred: {str(e)}')
         return redirect(url_for('index'))
     else:
-        h3_text = fetch_data()
-    
+        fetch_title()
+
     # Get the last modified time of the app.py file
-    return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses,csv_filename=csv_filename)
+    return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses, csv_filename=csv_filename)
 
 @app.route('/results')
 def results():
