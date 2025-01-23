@@ -1,4 +1,3 @@
-import csv
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -7,10 +6,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import time
 import os
+import csv
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__, template_folder='templates')
 app.secret_key = os.urandom(24)
 
 class Business:
@@ -28,18 +28,26 @@ class Business:
 businesses = []
 h3_text = ""
 csv_filename = ""
+driver = None
 
-def fetch_data():
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9222')
-    
-    # Correct usage of ChromeDriverManager
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
+def load_driver():
+    global driver
+    if driver is None:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--remote-debugging-port=9222')
+        
+        # Correct usage of ChromeDriverManager
+        service = Service()
+        driver = webdriver.Chrome(service=service, options=options)
+    return driver
+
+def fetch_page_data():
+    global driver
+    driver = load_driver()
 
     try:
         driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
@@ -56,27 +64,16 @@ def fetch_data():
     except Exception as e:
         print(f"An error occurred: {e}")
         h3_text = "Error occurred"
-    finally:
-        driver.quit()
 
     return h3_text
 
 def start_search(keywords, start_date):
-    global businesses
-
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9222')
-    
-    # Correct usage of ChromeDriverManager
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
+    global businesses, driver
+    driver = load_driver()
 
     try:
         for keyword in keywords:
+            print(keyword)
             driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ddlSelection")))
@@ -95,9 +92,7 @@ def start_search(keywords, start_date):
             search_button = driver.find_element(By.ID, "btnSearch")
             search_button.click()
 
-            WebDriverWait(driver, 10).until( lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)") )
-
-            time.sleep(1)
+            WebDriverWait(driver, 10).until(lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)"))
 
             html_content = driver.page_source
             soup = BeautifulSoup(html_content, 'html.parser')
@@ -119,20 +114,21 @@ def start_search(keywords, start_date):
 
     except Exception as e:
         print(f"An error occurred: {e}")
-    finally:
-        driver.quit()
 
     return businesses
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global businesses, csv_filename
+    global businesses, csv_filename, driver
     last_modified_time = datetime.fromtimestamp(os.path.getmtime(__file__)).strftime('%Y-%m-%d %H:%M:%S')
 
     # Generate a unique filename with a timestamp
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
     csv_filename = f"ccfsSearchResults_{timestamp}.csv"
     csv_filepath = os.path.join(os.getcwd(), csv_filename)
+
+    if driver is None:
+        driver = load_driver()
 
     if request.method == 'POST':
         keywords = request.form['keywords']
@@ -168,11 +164,8 @@ def index():
             flash(f'An error occurred: {str(e)}')
         return redirect(url_for('index'))
     else:
-        h3_text = fetch_data()
+        return render_template('index.html', last_modified_time=last_modified_time, title="Loading...", businesses=businesses, csv_filename=csv_filename)
     
-    # Get the last modified time of the app.py file
-    return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses,csv_filename=csv_filename)
-
 @app.route('/results')
 def results():
     global businesses, csv_filename
@@ -184,6 +177,23 @@ def results():
 @app.route('/download/<filename>')
 def download_file(filename):
     return send_file(filename, as_attachment=True)
+
+@app.route('/fetch_page_data')
+def fetch_page_data_route():
+    global h3_text
+    h3_text = fetch_page_data()
+    last_modified_time = datetime.fromtimestamp(os.path.getmtime(__file__)).strftime('%Y-%m-%d %H:%M:%S')
+    return jsonify({
+        'title': h3_text,
+        'last_modified_time': last_modified_time
+    })
+
+@app.teardown_appcontext
+def teardown_driver(exception):
+    global driver
+    if driver is not None:
+        driver.quit()
+        driver = None
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

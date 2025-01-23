@@ -1,0 +1,823 @@
+         21807 function calls (21412 primitive calls) in 44.925 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   44.925   44.925 C:\Users\rudym\source\repos\wagov\cProfileApp.py:6(run_app)
+        1    0.000    0.000   44.925   44.925 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\app.py:546(run)
+        1    0.000    0.000   44.917   44.917 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:960(run_simple)
+        1    0.000    0.000   44.888   44.888 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:442(run_with_reloader)
+        1    0.000    0.000   44.888   44.888 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:266(restart_with_reloader)
+        1    0.000    0.000   44.886   44.886 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:387(call)
+        1    0.000    0.000   44.872   44.872 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1269(wait)
+        2    0.000    0.000   44.872   22.436 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1590(_wait)
+        2   44.872   22.436   44.872   22.436 {built-in method _winapi.WaitForSingleObject}
+     30/8    0.000    0.000    0.018    0.002 <frozen importlib._bootstrap>:1349(_find_and_load)
+        1    0.000    0.000    0.018    0.018 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:906(make_server)
+        1    0.000    0.000    0.018    0.018 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:711(__init__)
+     30/8    0.000    0.000    0.017    0.002 <frozen importlib._bootstrap>:1304(_find_and_load_unlocked)
+     27/8    0.000    0.000    0.016    0.002 <frozen importlib._bootstrap>:911(_load_unlocked)
+     25/8    0.000    0.000    0.016    0.002 <frozen importlib._bootstrap_external>:1020(exec_module)
+    65/15    0.000    0.000    0.014    0.001 <frozen importlib._bootstrap>:480(_call_with_frames_removed)
+        1    0.000    0.000    0.014    0.014 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:814(__init__)
+        1    0.000    0.000    0.014    0.014 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1446(_execute_child)
+     27/8    0.000    0.000    0.014    0.002 {built-in method builtins.exec}
+        1    0.014    0.014    0.014    0.014 {built-in method _winapi.CreateProcess}
+        1    0.000    0.000    0.012    0.012 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\http\server.py:134(server_bind)
+        1    0.000    0.000    0.012    0.012 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:793(getfqdn)
+        1    0.012    0.012    0.012    0.012 {built-in method _socket.gethostbyaddr}
+     11/6    0.000    0.000    0.007    0.001 {built-in method builtins.__import__}
+       25    0.000    0.000    0.006    0.000 <frozen importlib._bootstrap_external>:1093(get_code)
+        1    0.000    0.000    0.006    0.006 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\__init__.py:1(<module>)
+        1    0.000    0.000    0.005    0.005 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\cli.py:704(load_dotenv)
+        1    0.000    0.000    0.004    0.004 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:980(version)
+        1    0.000    0.000    0.004    0.004 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\__init__.py:1(<module>)
+    22/16    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap>:1390(_handle_fromlist)
+       29    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap>:1240(_find_spec)
+        1    0.000    0.000    0.004    0.004 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\main.py:1(<module>)
+       28    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:1551(find_spec)
+       28    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:1522(_get_spec)
+       54    0.000    0.000    0.003    0.000 <frozen importlib._bootstrap_external>:1624(find_spec)
+        1    0.000    0.000    0.003    0.003 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\__init__.py:269(__init__)
+       25    0.000    0.000    0.003    0.000 <frozen importlib._bootstrap_external>:1214(get_data)
+        1    0.000    0.000    0.003    0.003 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:132(Value)
+        1    0.000    0.000    0.003    0.003 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\cli.py:772(show_server_banner)
+        2    0.000    0.000    0.003    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\utils.py:219(echo)
+        3    0.000    0.000    0.003    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_internal.py:78(_log)
+        4    0.000    0.000    0.003    0.001 {built-in method builtins.next}
+        2    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\__init__.py:71(search_function)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:954(distribution)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:393(from_name)
+        5    0.000    0.000    0.002    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:175(write)
+        5    0.002    0.000    0.002    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\__init__.py:1(<module>)
+       25    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:782(_compile_bytecode)
+        7    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:890(<genexpr>)
+       63    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\__init__.py:330(_compile)
+        7    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:756(search)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1509(info)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1640(_log)
+       18    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\__init__.py:287(compile)
+       17    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_functools.py:75(wrapper)
+       19    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:743(compile)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1666(handle)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1720(callHandlers)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1010(handle)
+        3    0.000    0.000    0.002    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1138(emit)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:1(<module>)
+       75    0.001    0.000    0.002    0.000 {built-in method builtins.__build_class__}
+       25    0.002    0.000    0.002    0.000 {built-in method marshal.loads}
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:483(version)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:448(metadata)
+      270    0.001    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:101(_path_join)
+        2    0.000    0.000    0.002    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:584(func)
+        7    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:765(lookup)
+      124    0.002    0.000    0.002    0.000 {built-in method nt.stat}
+        7    0.000    0.000    0.002    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:775(__init__)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:342(get_text_stdout)
+        1    0.000    0.000    0.002    0.002 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:263(_get_windows_console_stream)
+       15    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:7(make_regex)
+      117    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:145(_path_stat)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:1(<module>)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:70(Value)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:223(_get_text_stdout)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:53(__init__)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:665(get_sockaddr)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:958(getaddrinfo)
+       25    0.001    0.000    0.001    0.000 {built-in method _io.open_code}
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:70(RLock)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:1(<module>)
+        1    0.000    0.000    0.001    0.001 {built-in method _socket.getaddrinfo}
+       27    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:806(module_from_spec)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:1(<module>)
+       30    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:416(__enter__)
+       19    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:970(parse)
+       25    0.001    0.000    0.001    0.000 {method 'read' of '_io.BufferedReader' objects}
+    36/19    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:451(_parse_sub)
+    47/19    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:511(_parse)
+       19    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:576(_code)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:1(<module>)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:833(log_startup)
+       10    0.001    0.000    0.001    0.000 {built-in method nt.listdir}
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:1(<module>)
+       26    0.001    0.000    0.001    0.000 {method '__exit__' of '_io._IOBase' objects}
+        7    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:742(children)
+    70/68    0.000    0.000    0.001    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:426(inner)
+       40    0.001    0.000    0.001    0.000 <frozen importlib._bootstrap>:426(_get_module_lock)
+       50    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:513(cache_from_source)
+        2    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:81(__init__)
+        1    0.000    0.000    0.001    0.001 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:1(<module>)
+       27    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:733(_init_module_attrs)
+        2    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:540(_safe_write)
+        2    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:46(write)
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap_external>:1318(create_module)
+        2    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:192(write_and_convert)
+        1    0.001    0.001    0.001    0.001 {built-in method _imp.create_dynamic}
+        2    0.000    0.000    0.001    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:208(write_plain_text)
+       32    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:164(_path_isfile)
+       35    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:155(_path_is_mode_type)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:1(<module>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:190(write)
+    66/19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:37(_compile)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:304(acquire)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\win32.py:114(winapi_test)
+       51    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:632(cached)
+       26    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:642(_get_cached)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\code.py:1(<module>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:161(write)
+       17    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\functools.py:541(decorating_function)
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\win32.py:115(<genexpr>)
+       19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\functools.py:36(update_wrapper)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\win32.py:108(_winapi_test)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\__init__.py:31(message_from_string)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\parser.py:56(parsestr)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:519(auto_wrap_for_ansi)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\parser.py:41(parse)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\getpass.py:1(<module>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\main.py:275(find_dotenv)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_internal.py:67(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\variables.py:1(<module>)
+       19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:514(_compile_info)
+        8    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1634(__getitem__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\winterm.py:178(enable_vt_processing)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:173(feed)
+       17    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:241(_optimize_charset)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\main.py:35(DotEnv)
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1423(__init__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1675(_fill_cache)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:178(_call_parse)
+       45    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:851(normalize)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1233(path_stats)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:218(_parsegen)
+       11    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1658(copy_with)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:2994(__new__)
+       31    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:173(_type_check)
+     1448    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+       26    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1619(_get_spec)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:907(read_text)
+       45    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\__init__.py:183(sub)
+     1596    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+1598/1522    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:162(__enter__)
+       44    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:739(joinpath)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:539(read_text)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:221(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:628(read_text)
+     1431    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:2975(_make_nmtuple)
+  596/593    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:148(make_property)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:450(__init__)
+       26    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:833(spec_from_file_location)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:427(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\repr.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1575(find_distributions)
+       50    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:137(_path_split)
+      5/3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:574(__getitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:871(find_distributions)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1748(__getitem__)
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\main.py:257(_walk_to_root)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:124(setdefault)
+       14    0.000    0.000    0.000    0.000 {built-in method nt._path_isfile}
+        7    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:759(mtime)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:886(_search_paths)
+        1    0.000    0.000    0.000    0.000 <frozen os>:750(copy)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\collections\__init__.py:358(namedtuple)
+       63    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1500(_path_importer_cache)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:844(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:44(RawValue)
+      362    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:250(_is_console)
+       45    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:498(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:753(Union)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:463(_lock_unlock_module)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:39(_new_value)
+        2    0.000    0.000    0.000    0.000 {built-in method _io.open}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:1(<module>)
+      901    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1487(_path_hooks)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:682(get_interface_ip)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:326(__init__)
+       86    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1368(__setattr__)
+      857    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:212(Synchronized)
+       29    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:190(_path_abspath)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:296(malloc)
+       72    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:529(open)
+       45    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:117(__init__)
+       52    0.000    0.000    0.000    0.000 <frozen os>:711(__getitem__)
+       18    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1639(<genexpr>)
+      318    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:167(__getitem__)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:372(release)
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:260(_collect_type_parameters)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:1(<module>)
+       29    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:177(_path_isabs)
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:420(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:224(Close)
+        2    0.000    0.000    0.000    0.000 {built-in method _winapi.CloseHandle}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:188(_malloc)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:19(Message)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:472(_parse_headers)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1625(makeRecord)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:158(_new_arena)
+    75/28    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:177(getwidth)
+      663    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:93(get_buffer)
+      232    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:260(get)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:38(__init__)
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1307(__init__)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:697(_classify_pyc)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:806(Optional)
+       10    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_text.py:79(__hash__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:298(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:1(<module>)
+       15    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1592(__or__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:749(zip_children)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\_path\__init__.py:308(__init__)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.eval}
+       18    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1603(__and__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\_path\__init__.py:147(make)
+       25    0.000    0.000    0.000    0.000 <frozen ntpath>:99(join)
+       75    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:89(_unpack_uint32)
+       29    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\_distutils_hack\__init__.py:101(find_spec)
+      108    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1294(_is_dunder)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:238(SynchronizedString)
+      101    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:129(__next__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:1(<module>)
+       53    0.000    0.000    0.000    0.000 <frozen os>:785(encodekey)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\security.py:17(gen_salt)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\_path\__init__.py:89(__init__)
+       10    0.000    0.000    0.000    0.000 <frozen ntpath>:254(basename)
+      101    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x00007FF88E9528A0}
+       31    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:164(_type_convert)
+       57    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_collections.py:20(__missing__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:476(server_activate)
+      150    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:139(<genexpr>)
+        9    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:789(<genexpr>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:153(__next__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:197(__call__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\stringprep.py:1(<module>)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:730(_validate_timestamp_pyc)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1716(path_hook_for_FileFinder)
+       36    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:695(__call__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\win32.py:170(GetConsoleMode)
+       21    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\security.py:22(<genexpr>)
+      247    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\tbtools.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py:1323(__init__)
+       29    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:982(find_spec)
+      106    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\__init__.py:43(normalize_encoding)
+        1    0.000    0.000    0.000    0.000 {method 'listen' of '_socket.socket' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:193(__init__)
+       10    0.000    0.000    0.000    0.000 <frozen ntpath>:222(split)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\sansio\app.py:562(debug)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:334(__new__)
+       10    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1757(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:50(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1591(findCaller)
+       99    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1585(_get_value)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:74(__new__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\utils.py:95(__get__)
+        3    0.000    0.000    0.000    0.000 <frozen zipimport>:68(__init__)
+      320    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:239(__next)
+       20    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:345(choice)
+       64    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1765(__eq__)
+        1    0.000    0.000    0.000    0.000 {method 'connect' of '_socket.socket' objects}
+        4    0.000    0.000    0.000    0.000 <frozen abc>:105(__new__)
+        2    0.000    0.000    0.000    0.000 {built-in method nt._path_exists}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:463(server_bind)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:268(free)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\variables.py:18(Atom)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\sansio\app.py:469(jinja_env)
+      208    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1292(_close_pipe_fds)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\app.py:385(create_jinja_environment)
+      101    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:79(readline)
+       28    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\_policybase.py:301(header_source_parse)
+       13    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1122(_is_unpacked_typevartuple)
+       69    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:645(parent)
+        7    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:804(search)
+       92    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:292(tell)
+      194    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:255(match)
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:445(cb)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:582(list2cmdline)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:674(_check_name_wrapper)
+      158    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+        6    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:494(get)
+      114    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1226(__exit__)
+        1    0.000    0.000    0.000    0.000 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:166(__fspath__)
+       36    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1152(__new__)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:82(remove)
+      135    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:163(__len__)
+       29    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:232(__init__)
+       28    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1128(find_spec)
+        9    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:197(_is_internal_frame)
+        9    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:97(closegroup)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\tempfile.py:142(rng)
+      287    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:491(_verbose_message)
+       23    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:227(__str__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_text.py:1(<module>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:501(close)
+      114    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1222(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:102(push)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\templating.py:45(__init__)
+       20    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:245(_randbelow_with_getrandbits)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1023(__init__)
+        1    0.000    0.000    0.000    0.000 {method 'bind' of '_socket.socket' objects}
+       45    0.000    0.000    0.000    0.000 {method 'sub' of 're.Pattern' objects}
+        2    0.000    0.000    0.000    0.000 <frozen abc>:117(__instancecheck__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1598(__init__)
+      214    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+        7    0.000    0.000    0.000    0.000 <frozen _collections_abc>:808(get)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:497(_real_close)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.compile}
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:596(get_content_type)
+       17    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:214(_compile_charset)
+       22    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1358(__getattr__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\codeop.py:1(<module>)
+       84    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:175(append)
+       15    0.000    0.000    0.000    0.000 <frozen ntpath>:573(abspath)
+    19/12    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:439(_get_literal_prefix)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:46(__init__)
+       45    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:505(__new__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:121(_make_name)
+        2    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:79(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:63(_repair_headers)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:2128(getLogger)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:119(__init__)
+        2    0.000    0.000    0.000    0.000 {function socket.close at 0x000001FCA7E4FEC0}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\win32.py:177(SetConsoleMode)
+        9    0.000    0.000    0.000    0.000 <frozen ntpath>:50(normcase)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:240(__exit__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:987(format)
+       21    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:401(_simple)
+       29    0.000    0.000    0.000    0.000 {built-in method nt._path_splitroot}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\environment.py:294(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:49(isatty)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:289(drive)
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:173(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:184(close)
+       13    0.000    0.000    0.000    0.000 {built-in method _ctypes.byref}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:411(discover)
+        1    0.000    0.000    0.000    0.000 <frozen os>:719(__setitem__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:997(exec_module)
+       54    0.000    0.000    0.000    0.000 <frozen os>:779(check_str)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:205(_add_free_block)
+       90    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:128(seed)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:48(_new_module)
+       43    0.000    0.000    0.000    0.000 <frozen _collections_abc>:873(__iter__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:620(get_content_maintype)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:131(get_win32_calls)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:389(_mk_bitmap)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:276(contextmanager)
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_builtin}
+       24    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:371(_escape)
+       54    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:67(_relax_case)
+      112    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+       10    0.000    0.000    0.000    0.000 {method 'flush' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1490(setLevel)
+      184    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+      184    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1361(getLogger)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:708(server_close)
+       62    0.000    0.000    0.000    0.000 {built-in method nt._path_splitroot_ex}
+       92    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:698(format)
+       96    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        3    0.000    0.000    0.000    0.000 <frozen _collections_abc>:815(__contains__)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:169(_path_isdir)
+       28    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:311(_class_escape)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1455(_missing_)
+       65    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1437(__eq__)
+       18    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:448(_uniq)
+        2    0.000    0.000    0.000    0.000 <frozen abc>:121(__subclasscheck__)
+       51    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+       19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:230(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1446(_clear_cache)
+       21    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:893(getrandbits)
+      151    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+       38    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\__init__.py:23(<genexpr>)
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.locals}
+       81    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:139(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method nt.putenv}
+        2    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+       83    0.000    0.000    0.000    0.000 {method 'partition' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'readlines' of '_io._IOBase' objects}
+       46    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1326(exec_module)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\globals.py:54(resolve_color_default)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\random.py:458(choices)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:260(convert_osc)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:179(encode)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.dir}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:22(IncrementalDecoder)
+        4    0.000    0.000    0.000    0.000 {built-in method _abc._abc_init}
+       62    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+       56    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:82(groups)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:61(closed)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:379(_remove_dups_flatten)
+        9    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:85(opengroup)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1119(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\signal.py:56(signal)
+        3    0.000    0.000    0.000    0.000 <frozen ntpath>:243(splitext)
+        6    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:203(__getattr__)
+       86    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1773(__hash__)
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_dynamic}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:989(create_module)
+       38    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:573(isstring)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:951(is_running_from_reloader)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:243(get_payload)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:484(server_close)
+       42    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:71(BaseProcess)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\globals.py:20(get_current_context)
+       25    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:496(should_strip_ansi)
+       15    0.000    0.000    0.000    0.000 {built-in method nt._getfullpathname}
+        2    0.000    0.000    0.000    0.000 {function Random.seed at 0x000001FCA9DD94E0}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:257(_parse_path)
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:98(__getattr__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:394(_bytes_to_codes)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:930(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:571(__exit__)
+        1    0.000    0.000    0.000    0.000 {built-in method _socket.gethostname}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:140(joinpath)
+       10    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:203(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1130(flush)
+       40    0.000    0.000    0.000    0.000 {built-in method _weakref._remove_dead_weakref}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\tbtools.py:220(DebugTraceback)
+        3    0.000    0.000    0.000    0.000 {built-in method msvcrt.get_osfhandle}
+       28    0.000    0.000    0.000    0.000 {built-in method _imp.find_frozen}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.create_builtin}
+       19    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        4    0.000    0.000    0.000    0.000 {method 'fileno' of '_io.TextIOWrapper' objects}
+       21    0.000    0.000    0.000    0.000 {built-in method fromkeys}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1445(_iter_member_by_def_)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:54(__init__)
+       43    0.000    0.000    0.000    0.000 <frozen os>:734(__iter__)
+       74    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:112(__init__)
+       53    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:130(with_segments)
+       44    0.000    0.000    0.000    0.000 {function FreezableDefaultDict.__missing__ at 0x000001FCAA124E00}
+    45/41    0.000    0.000    0.000    0.000 {built-in method builtins.hash}
+       28    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:511(set_raw)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:571(isatty)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\weakref.py:104(__init__)
+       10    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_text.py:90(lower)
+    13/11    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1443(__hash__)
+       46    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        7    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:732(__new__)
+       30    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+       19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:954(fix_flags)
+        9    0.000    0.000    0.000    0.000 {built-in method _winapi.LCMapStringEx}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:30(BaseContext)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:532(set_inheritable)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:3790(__getattr__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1764(isEnabledFor)
+       99    0.000    0.000    0.000    0.000 {method 'popleft' of 'collections.deque' objects}
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_collections.py:23(freeze)
+       29    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:599(__init__)
+        5    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:470(_get_charset_prefix)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_text.py:7(FoldedCase)
+        2    0.000    0.000    0.000    0.000 {method 'getsockname' of '_socket.socket' objects}
+        2    0.000    0.000    0.000    0.000 <frozen os>:1126(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:135(rebuild_ctype)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:682(formatMessage)
+        5    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\utils.py:78(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\environment.py:82(create_cache)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:235(_absorb)
+       30    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        3    0.000    0.000    0.000    0.000 <frozen genericpath>:157(_splitext)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:206(isatty)
+       22    0.000    0.000    0.000    0.000 {built-in method nt.urandom}
+        2    0.000    0.000    0.000    0.000 {method 'from_address' of '_ctypes.PyCArrayType' objects}
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:199(__get__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:33(getregentry)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:396(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:53(__getitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:250(_remove_allocated_block)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+       32    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\threading.py:592(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_internal.py:45(_has_level_handler)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:277(_raw_path)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\weakref.py:451(get)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:691(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:62(Reader)
+       18    0.000    0.000    0.000    0.000 {built-in method sys.intern}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:322(BufferWrapper)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\repr.py:120(DebugReprGenerator)
+       10    0.000    0.000    0.000    0.000 <frozen ntpath>:34(_get_bothseps)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:662(spec_from_loader)
+       22    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:171(__setitem__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:410(__getitem__)
+        1    0.000    0.000    0.000    0.000 <frozen _collections_abc>:823(keys)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1477(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:470(format)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:443(<genexpr>)
+       15    0.000    0.000    0.000    0.000 {built-in method nt._path_normpath}
+        7    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:410(_generate_overlap_table)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\utils.py:439(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:258(_free_pending_blocks)
+        2    0.000    0.000    0.000    0.000 {method 'tolist' of 'memoryview' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.vars}
+       40    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:158(__init__)
+       27    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\code.py:17(InteractiveInterpreter)
+        2    0.000    0.000    0.000    0.000 <frozen codecs>:94(__new__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:109(readable)
+       28    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:412(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\signal.py:24(_int_to_enum)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:378(getregentry)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:100(_intenum_converter)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:676(usesTime)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:123(__init__)
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:450(__exit__)
+       38    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1427(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:103(synchronized)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:167(<lambda>)
+        4    0.000    0.000    0.000    0.000 {method 'finditer' of 're.Pattern' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.set_handle_inheritable}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\weakref.py:367(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:351(_deduplicate)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:485(__init__)
+       31    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+       19    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:76(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:197(_new_message)
+       46    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        4    0.000    0.000    0.000    0.000 {method 'isatty' of '_io.BufferedWriter' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:463(_format)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\tbtools.py:353(DebugFrameSummary)
+        1    0.000    0.000    0.000    0.000 {built-in method _winapi.GetLastError}
+        2    0.000    0.000    0.000    0.000 <frozen _collections_abc>:108(_check_methods)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:41(__new__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1409(_fixupParents)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:121(writable)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\__init__.py:229(DebuggedApplication)
+       14    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:866(__bool__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:33(ForkingPickler)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:59(ThreadedStream)
+        3    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:957(createLock)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:136(seekable)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_functools.py:6(method_cache)
+        1    0.000    0.000    0.000    0.000 {built-in method _winapi.GetExitCodeProcess}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:46(SemLock)
+        2    0.000    0.000    0.000    0.000 {method 'read' of '_io.StringIO' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:273(getuntil)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:485(_ansi_style)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1130(__del__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\variables.py:29(Literal)
+        2    0.000    0.000    0.000    0.000 {method 'split' of 'bytes' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1435(_iter_member_by_value_)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:71(close)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:123(pushlines)
+       11    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 <frozen codecs>:322(decode)
+       13    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_collections.py:24(<lambda>)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1184(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\threading.py:281(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\weakref.py:289(update)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:33(Binding)
+       11    0.000    0.000    0.000    0.000 {built-in method nt.getpid}
+        1    0.000    0.000    0.000    0.000 {method 'write' of '_io.StringIO' objects}
+        4    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'setsockopt' of '_socket.socket' objects}
+       18    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:31(_combine_flags)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\_policybase.py:319(header_fetch_parse)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:28(__getattr__)
+       30    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:653(has_location)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1209(get_filename)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\helpers.py:35(get_load_dotenv)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\signal.py:36(_enum_to_int)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\variables.py:48(Variable)
+       13    0.000    0.000    0.000    0.000 {method 'isalnum' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\utils.py:445(_postinit)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:440(_discover_resolvers)
+       24    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_compiler.py:431(_get_iscased)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\weakref.py:427(__setitem__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:129(getLevelName)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py:1973(__del__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:178(__init__)
+       28    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_adapters.py:64(redent)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1604(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\sansio\app.py:523(create_global_jinja_loader)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:898(_addHandlerRef)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:115(Heap)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\_weakrefset.py:37(__init__)
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:444(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:694(path)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:313(WatchdogReloaderLoop)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:370(Barrier)
+        9    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1096(__eq__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:455(usesTime)
+        7    0.000    0.000    0.000    0.000 {method 'setter' of 'property' objects}
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1017(create_module)
+        6    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:1105(__hash__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:276(flush)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\environment.py:126(_environment_config_check)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:169(_get_args_for_reloading)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:217(Condition)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:501(_requires_builtin_wrapper)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:205(_checkLevel)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\_policybase.py:289(_sanitize_header)
+       16    0.000    0.000    0.000    0.000 {method 'random' of '_random.Random' objects}
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1333(value)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\threading.py:1427(current_thread)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\utils.py:47(_has_surrogates)
+        1    0.000    0.000    0.000    0.000 <frozen codecs>:312(__init__)
+        3    0.000    0.000    0.000    0.000 {built-in method time.time_ns}
+        4    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 <frozen os>:855(fsdecode)
+       20    0.000    0.000    0.000    0.000 {method 'bit_length' of 'int' objects}
+        1    0.000    0.000    0.000    0.000 {method 'from_buffer' of '_ctypes.PyCSimpleType' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:40(Position)
+        6    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:43(register)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\functools.py:66(wraps)
+       16    0.000    0.000    0.000    0.000 {built-in method math.floor}
+       10    0.000    0.000    0.000    0.000 {method 'isidentifier' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\repr.py:97(_sequence_repr_maker)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\threading.py:1094(name)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:220(Process)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\types.py:334(__getattr__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:391(getMessage)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:174(Finalize)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:251(AbstractReducer)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:31(Arena)
+        2    0.000    0.000    0.000    0.000 {built-in method _bisect.insort_right}
+        1    0.000    0.000    0.000    0.000 {method 'writable' of '_io.BufferedWriter' objects}
+       11    0.000    0.000    0.000    0.000 {method 'isascii' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:839(filter)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:607(<lambda>)
+        7    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:736(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:199(__init__)
+        3    0.000    0.000    0.000    0.000 {built-in method sys._getframe}
+        1    0.000    0.000    0.000    0.000 <frozen _collections_abc>:850(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:150(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:819(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:228(ReloaderLoop)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:231(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\threading.py:122(RLock)
+       16    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:447(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\serving.py:655(select_address_family)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1682(addHandler)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:106(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:335(create_memoryview)
+        3    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+       16    0.000    0.000    0.000    0.000 {method 'clear' of 'dict' objects}
+        8    0.000    0.000    0.000    0.000 {method '__contains__' of 'frozenset' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\re\_parser.py:303(checkgroupname)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1102(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_compat.py:88(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:132(_InteractiveConsole)
+        2    0.000    0.000    0.000    0.000 {method 'extend' of 'collections.deque' objects}
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:115(_iter_bits_lsb)
+        8    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\collections\__init__.py:432(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:331(set_payload)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\colorama\ansitowin32.py:22(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:332(SpawnProcess)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:19(HTMLStringO)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:361(_ParentProcess)
+        1    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        4    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:211(is_multipart)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:237(_format_parsed_parts)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:858(legacy_normalize)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:90(_make_methods)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:230(DefaultContext)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\repr.py:55(_Helper)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:152(_roundup)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:316(IncrementalDecoder)
+        1    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.lock' objects}
+        4    0.000    0.000    0.000    0.000 {method 'seek' of '_io.StringIO' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method _ctypes.sizeof}
+       10    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\_distutils_hack\__init__.py:108(<lambda>)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:3108(_namedtuple_mro_entries)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\sansio\app.py:549(debug)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:28(Original)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\code.py:178(InteractiveConsole)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:328(Event)
+        1    0.000    0.000    0.000    0.000 {method 'seekable' of '_io.BufferedWriter' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method _io.text_encoding}
+        1    0.000    0.000    0.000    0.000 {built-in method sys.exception}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\functools.py:501(lru_cache)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\heap.py:170(_discard_arena)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:203(reducer)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:18(IncrementalEncoder)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:182(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:216(SynchronizedArray)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\sharedctypes.py:180(SynchronizedBase)
+        1    0.000    0.000    0.000    0.000 {built-in method _signal.signal}
+        2    0.000    0.000    0.000    0.000 {method 'cast' of 'memoryview' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\parser.py:17(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:210(_pop_message)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1750(getEffectiveLevel)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:37(current_process)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:130(Semaphore)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\codeop.py:105(Compile)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:178(Codec)
+        1    0.000    0.000    0.000    0.000 {method 'isatty' of '_io.TextIOWrapper' objects}
+        2    0.000    0.000    0.000    0.000 {method 'fileno' of '_socket.socket' objects}
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\enum.py:1452(<lambda>)
+        8    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:2367(cast)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:492(fileno)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py:749(_check_compression)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\__init__.py:129(_ConsoleFrame)
+        3    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:189(name)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:104(DupHandle)
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_reloader.py:289(StatReloaderLoop)
+        2    0.000    0.000    0.000    0.000 {built-in method from_iterable}
+        2    0.000    0.000    0.000    0.000 {method 'truncate' of '_io.StringIO' objects}
+        1    0.000    0.000    0.000    0.000 <frozen codecs>:189(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:553(__repr__)
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\typing.py:3000(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py:1977(close)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:182(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:25(StreamWriter)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:233(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:344(SpawnContext)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:44(sub_debug)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:114(_ConsoleLoader)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:360(ForkAwareThreadLock)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\codeop.py:126(CommandCompiler)
+        1    0.000    0.000    0.000    0.000 {method 'remove' of 'set' objects}
+        1    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\message.py:638(get_default_type)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\__init__.py:900(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\flask\templating.py:57(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1573(_internal_poll)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:346(AuthenticationString)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\code.py:333(Quitter)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\debug\console.py:199(Console)
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+        1    0.000    0.000    0.000    0.000 <frozen abc>:7(abstractmethod)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\click\_winconsole.py:150(writable)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py:394(_MainProcess)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\getpass.py:25(GetPassWarning)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:149(BoundedSemaphore)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:272(IncrementalEncoder)
+        1    0.000    0.000    0.000    0.000 {built-in method atexit.register}
+        1    0.000    0.000    0.000    0.000 {method 'values' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method sys.audit}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\inspect.py:758(getmro)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1353(disable)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\jinja2\environment.py:108(load_extensions)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\utf_16_le.py:28(StreamReader)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\reduction.py:211(_C)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:17(BufferTooShort)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:237(get_context)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:104(_platform_supports_abstract_sockets)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:377(ForkAwareLocal)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:166(Lock)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\synchronize.py:191(RLock)
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'readable' of '_io._IOBase' objects}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.globals}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:568(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1345(_get_handles)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:1301(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\werkzeug\_internal.py:53(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1099(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:197(get_start_method)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\source\repos\wagov\myenv\Lib\site-packages\dotenv\parser.py:58(Error)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:14(ProcessError)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:48(debug)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\util.py:52(info)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:370(StreamWriter)
+        1    0.000    0.000    0.000    0.000 {built-in method _bisect.bisect_left}
+        1    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _ctypes.addressof}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1014(is_package)
+        1    0.000    0.000    0.000    0.000 <frozen codecs>:263(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1307(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socket.py:237(__enter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\socketserver.py:669(join)
+        2    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\email\feedparser.py:126(__iter__)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\logging\__init__.py:257(_register_at_fork_reinit_lock)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\importlib\metadata\_functools.py:83(<lambda>)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:265(_cleanup)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1677(terminate)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:20(TimeoutError)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:23(AuthenticationError)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\encodings\idna.py:373(StreamReader)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:298(root)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:307(_tail)
+        1    0.000    0.000    0.000    0.000 C:\Users\rudym\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\context.py:187(get_context)
+
+
