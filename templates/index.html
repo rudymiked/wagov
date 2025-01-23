@@ -5,31 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Add some basic styling for the spinner */
-        .spinner {
-            display: none;
-            border: 16px solid #f3f3f3;
-            border-top: 16px solid #3469db;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 </head>
 <body>
-    <div class="spinner" id="spinner"></div>
-    <div id="content" class="container mt-5" style="display: none;">
+    <div class="container mt-5">
         <h1 class="text-center">{{ title }}</h1>
         <form id="search-form" method="POST" action="/" target="download-frame">
             <div class="form-group">
@@ -66,86 +44,59 @@
             </table>
             <a id="download-link" href="#" class="btn btn-success mt-3">Download CSV</a>
         </div>
+        <script>
+            function checkInputs() {
+                const keywords = document.getElementById('keywords').value.trim();
+                const startDate = document.getElementById('start_date').value.trim();
+                const startButton = document.getElementById('start-button');
+                startButton.disabled = !(keywords && startDate);
+            }
+            document.getElementById('keywords').addEventListener('input', checkInputs);
+            document.getElementById('start_date').addEventListener('input', checkInputs);
+            document.getElementById('search-form').addEventListener('submit', function() {
+                document.getElementById('loading-spinner').style.display = 'block';
+            });
+            document.getElementById('download-frame').addEventListener('load', function() {
+                document.getElementById('loading-spinner').style.display = 'none';
+                fetchResults();
+            });
+            function fetchResults() {
+                fetch('/results')
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultsBody = document.getElementById('results-body');
+                        resultsBody.innerHTML = '';
+                        data.businesses.forEach(business => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${business.name}</td>
+                                <td>${business.ubi}</td>
+                                <td>${business.business_type}</td>
+                                <td>${business.address}</td>
+                                <td>${business.agent_name}</td>
+                                <td>${business.status}</td>
+                            `;
+                            resultsBody.appendChild(row);
+                        });
+                        document.getElementById('results-table').style.display = 'block';
+                        // Update the download link with the new filename
+                        const downloadLink = document.getElementById('download-link');
+                        downloadLink.href = `/download/${data.csv_filename}`;
+                    });
+            }
+        </script>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info mt-3">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
         <div class="text-center mt-5">
             <p>Last update: {{ last_modified_time }}</p>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var spinner = document.getElementById("spinner");
-            var content = document.getElementById("content");
-
-            spinner.style.display = "block";
-
-            fetch('/fetch_page_data')
-                .then(response => response.json())
-                .then(data => {
-                    spinner.style.display = "none";
-                    content.style.display = "block";
-                    document.querySelector('h1').textContent = data.title;
-                    document.querySelector('.text-center.mt-5 p').textContent = `Last update: ${data.last_modified_time}`;
-                })
-                .catch(error => {
-                    spinner.style.display = "none";
-                    content.innerHTML = `<p>An error occurred: ${error}</p>`;
-                    content.style.display = "block";
-                });
-        });
-
-        function checkInputs() {
-            const keywords = document.getElementById('keywords').value.trim();
-            const startDate = document.getElementById('start_date').value.trim();
-            const startButton = document.getElementById('start-button');
-            startButton.disabled = !(keywords && startDate);
-        }
-
-        document.getElementById('keywords').addEventListener('input', checkInputs);
-        document.getElementById('start_date').addEventListener('input', checkInputs);
-
-        document.getElementById('search-form').addEventListener('submit', function() {
-            document.getElementById('loading-spinner').style.display = 'block';
-        });
-
-        document.getElementById('download-frame').addEventListener('load', function() {
-            document.getElementById('loading-spinner').style.display = 'none';
-            fetchResults();
-        });
-
-        function fetchResults() {
-            fetch('/results')
-                .then(response => response.json())
-                .then(data => {
-                    const resultsBody = document.getElementById('results-body');
-                    resultsBody.innerHTML = '';
-                    data.businesses.forEach(business => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${business.name}</td>
-                            <td>${business.ubi}</td>
-                            <td>${business.business_type}</td>
-                            <td>${business.address}</td>
-                            <td>${business.agent_name}</td>
-                            <td>${business.status}</td>
-                        `;
-                        resultsBody.appendChild(row);
-                    });
-                    document.getElementById('results-table').style.display = 'block';
-
-                    // Update the download link with the new filename
-                    const downloadLink = document.getElementById('download-link');
-                    downloadLink.href = `/download/${data.csv_filename}`;
-                });
-        }
-    </script>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="alert alert-info mt-3">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
 </body>
 </html>
