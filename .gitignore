@@ -16,3 +16,4 @@ venv/
 
 # Ignore CSV files
 *.csv
+/.vs
