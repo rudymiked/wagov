@@ -1,7 +1,8 @@
 import csv
+from lxml import html
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -30,16 +31,16 @@ h3_text = ""
 csv_filename = ""
 
 def fetch_data():
-    options = webdriver.ChromeOptions()
+    options = webdriver.EdgeOptions()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9222')
+    options.add_argument('--remote-debugging-port=9230')
     
-    # Correct usage of ChromeDriverManager
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
+    # Correct usage of EdgeDriver
+    service = EdgeService()
+    driver = webdriver.Edge(service=service, options=options)
 
     try:
         driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
@@ -47,10 +48,11 @@ def fetch_data():
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h3')))
 
         html_content = driver.page_source
-        soup = BeautifulSoup(html_content, 'html.parser')
+        tree = html.fromstring(html_content)
 
         # Extract the <h3> text
-        h3_text = soup.find('h3').text.strip() if soup.find('h3') else "No Title Found"
+        h3_element = tree.xpath('//h3')
+        h3_text = h3_element[0].text.strip() if h3_element else "No Title Found"
         print(f"h3_text: {h3_text}")
 
     except Exception as e:
@@ -64,19 +66,20 @@ def fetch_data():
 def start_search(keywords, start_date):
     global businesses
 
-    options = webdriver.ChromeOptions()
+    options = webdriver.EdgeOptions()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9222')
+    options.add_argument('--remote-debugging-port=9230')
     
-    # Correct usage of ChromeDriverManager
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=options)
+    # Correct usage of EdgeDriverManager
+    service = EdgeService()
+    driver = webdriver.Edge(service=service, options=options)
 
     try:
         for keyword in keywords:
+            print(keyword)
             driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ddlSelection")))
@@ -95,27 +98,28 @@ def start_search(keywords, start_date):
             search_button = driver.find_element(By.ID, "btnSearch")
             search_button.click()
 
-            WebDriverWait(driver, 10).until( lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)") )
+            WebDriverWait(driver, 10).until(lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)"))
 
             time.sleep(1)
 
             html_content = driver.page_source
-            soup = BeautifulSoup(html_content, 'html.parser')
-            table = soup.find('table', {'class': 'table table-striped table-responsive'})
+            tree = html.fromstring(html_content)
+            table = tree.xpath('//table[@class="table table-striped table-responsive"]')
 
             if table:
-                for row in table.find_all('tr')[1:]:
-                    cells = row.find_all('td')
+                rows = table[0].xpath('.//tr')[1:]  # Skip the header row
+                for row in rows:
+                    cells = row.xpath('.//td')
                     if len(cells) >= 6:
-                        name = cells[0].text.strip() if cells[0].text.strip() else "N/A"
-                        ubi = cells[1].text.strip() if cells[1].text.strip() else "N/A"
-                        business_type = cells[2].text.strip() if cells[2].text.strip() else "N/A"
-                        address = cells[3].text.strip() if cells[3].text.strip() else "N/A"
-                        agent_name = cells[4].text.strip() if cells[4].text.strip() else "N/A"
-                        status = cells[5].text.strip() if cells[5].text.strip() else "N/A"
+                        name = cells[0].text_content().strip() if cells[0].text_content().strip() else "N/A"
+                        ubi = cells[1].text_content().strip() if cells[1].text_content().strip() else "N/A"
+                        business_type = cells[2].text_content().strip() if cells[2].text_content().strip() else "N/A"
+                        address = cells[3].text_content().strip() if cells[3].text_content().strip() else "N/A"
+                        agent_name = cells[4].text_content().strip() if cells[4].text_content().strip() else "N/A"
+                        status = cells[5].text_content().strip() if cells[5].text_content().strip() else "N/A"
                         business = Business(name, ubi, business_type, address, agent_name, status)
                         businesses.append(business)
-                        print(f"Added business: {business}")
+                        # print(f"Added business: {business}")
 
     except Exception as e:
         print(f"An error occurred: {e}")
