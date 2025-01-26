@@ -4,6 +4,7 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV LATEST_RELEASE_WITH_LINUX_DISTRO=132.0.2957.127
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -13,11 +14,16 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Add Google Chrome repository and install Google Chrome
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' \
+# Add Microsoft Edge repository and install Microsoft Edge
+RUN wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list' \
     && apt-get update \
-    && apt-get install -y google-chrome-stable
+    && apt-get install -y microsoft-edge-stable
+
+# Download and install EdgeDriver
+RUN wget -q "https://msedgedriver.azureedge.net/${LATEST_RELEASE_WITH_LINUX_DISTRO}/edgedriver_linux64.zip" \
+    && unzip edgedriver_linux64.zip -d /usr/local/bin/ \
+    && rm edgedriver_linux64.zip
 
 # Set the working directory
 WORKDIR /app
@@ -25,16 +31,12 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app/
 
-# Create and activate virtual environment
-RUN python -m venv myenv
-ENV PATH="/app/myenv/bin:$PATH"
-
 # Install Python dependencies
 COPY requirements.txt .
-RUN /app/myenv/bin/pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 5000 for the Flask app
+# Expose the port the app runs on
 EXPOSE 5000
 
-# Run the Flask app with Gunicorn
-CMD ["/app/myenv/bin/gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "600", "app:app"]
+# Run the application
+CMD ["python", "app.py"]
