@@ -57,10 +57,10 @@ jobs:
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
         with:
-          name: python-app
+          name: app
           path: |
             .
-            !venv/
+            !myenv/
 
   deploy:
     permissions:
@@ -75,7 +75,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: python-app
+          name: app
           path: .
 
       - name: 'Deploy to Azure Web App'
