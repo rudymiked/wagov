@@ -15,13 +15,14 @@ app = Flask(__name__, template_folder='templates')
 app.secret_key = os.urandom(24)
 
 class Business:
-    def __init__(self, name, ubi, business_type, address, agent_name, status):
+    def __init__(self, name, ubi, business_type, address, agent_name, status, ein):
         self.name = name
         self.ubi = ubi
         self.business_type = business_type
         self.address = address
         self.agent_name = agent_name
         self.status = status
+        self.ein = ein
 
     def __repr__(self):
         return f"Business(name={self.name}, ubi={self.ubi}, business_type={self.business_type}, address={self.address}, agent_name={self.agent_name}, status={self.status})"
@@ -143,12 +144,13 @@ def start_search(keywords, start_date):
                     reader = csv.DictReader(f)
                     for row in reader:
                         business = Business(
-                            name=row.get("Name", "N/A"),
-                            ubi=row.get("UBI", "N/A"),
+                            name=row.get("Business Name", "N/A"),
+                            ubi=row.get("UBI#", "N/A"),
                             business_type=row.get("Business Type", "N/A"),
-                            address=row.get("Address", "N/A"),
-                            agent_name=row.get("Agent Name", "N/A"),
+                            address=row.get("Principal Office Address", "N/A"),
+                            agent_name=row.get("Registered Agent Name", "N/A"),
                             status=row.get("Status", "N/A"),
+                            ein=row.get("Nonprofit EIN", "N/A"),
                         )
                         businesses.append(business)
                         print(f"Added business: {business}")
@@ -197,7 +199,8 @@ def index():
                         'business_type': business.business_type,
                         'address': business.address,
                         'agent_name': business.agent_name,
-                        'status': business.status
+                        'status': business.status,
+                        "ein": business.ein
                     })
 
             flash('Search complete. Results are displayed below.')
