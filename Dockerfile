@@ -4,7 +4,7 @@ FROM python:3.12-slim
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV LATEST_RELEASE_WITH_LINUX_DISTRO=132.0.2957.127
+ENV LATEST_RELEASE_WITH_LINUX_DISTRO=134.0.3124.51
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
