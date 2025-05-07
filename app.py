@@ -180,7 +180,7 @@ def index():
                         'address': business.address,
                         'agent_name': business.agent_name,
                         'status': business.status,
-                        "ein": business.ein
+                        'ein': business.ein
                     })
 
             flash('Search complete. Results are displayed below.')
