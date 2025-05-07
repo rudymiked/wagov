@@ -60,7 +60,7 @@ jobs:
           name: app
           path: |
             .
-            !venv/
+            !myenv/
 
   deploy:
     permissions:
