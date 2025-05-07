@@ -1,4 +1,4 @@
-name: Build and deploy Python app to Azure Web App - CCFSSearch
+name: Docker - Build and deploy Python app to Azure Web App - CCFSSearch
 
 on:
   push:
