@@ -1,15 +1,10 @@
 import csv
 from lxml import html
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
-from selenium import webdriver
-from selenium.webdriver.edge.service import Service as EdgeService
-from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
 import os
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = os.urandom(24)
@@ -28,41 +23,8 @@ class Business:
         return f"Business(name={self.name}, ubi={self.ubi}, business_type={self.business_type}, address={self.address}, agent_name={self.agent_name}, status={self.status})"
 
 businesses = []
-h3_text = ""
+h3_text = "Corporations and Charities Filing System"
 csv_filename = ""
-
-def fetch_data():
-    options = webdriver.EdgeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9230')
-    
-    # Correct usage of EdgeDriver
-    service = EdgeService()
-    driver = webdriver.Edge(service=service, options=options)
-
-    try:
-        driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
-
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'h3')))
-
-        html_content = driver.page_source
-        tree = html.fromstring(html_content)
-
-        # Extract the <h3> text
-        h3_element = tree.xpath('//h3')
-        h3_text = h3_element[0].text.strip() if h3_element else "No Title Found"
-        print(f"h3_text: {h3_text}")
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        h3_text = "Error occurred"
-    finally:
-        driver.quit()
-
-    return h3_text
 
 def start_search(keywords, start_date):
     global businesses
@@ -190,7 +152,7 @@ def index():
             flash(f'An error occurred: {str(e)}')
         return redirect(url_for('index'))
     else:
-        h3_text = fetch_data()
+        h3_text = "Corporations and Charities Filing System"
     
     # Get the last modified time of the app.py file
     return render_template('index.html', last_modified_time=last_modified_time, title=h3_text, businesses=businesses,csv_filename=csv_filename)
