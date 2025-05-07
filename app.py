@@ -66,24 +66,40 @@ def fetch_data():
 def start_search(keywords, start_date):
     global businesses
 
-    options = webdriver.EdgeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--remote-debugging-port=9230')
-    
-    # Correct usage of EdgeDriverManager
-    service = EdgeService()
-    driver = webdriver.Edge(service=service, options=options)
+    # Clear the businesses list before starting
+    businesses = []
 
-    try:
-        for keyword in keywords:
-            print(keyword)
+    # Set up a directory for downloaded files
+    download_dir = os.path.join(os.getcwd(), "downloads")
+    os.makedirs(download_dir, exist_ok=True)
+
+    for keyword in keywords:
+        # Configure WebDriver options for file download
+        options = webdriver.EdgeOptions()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        options.add_argument('--remote-debugging-port=9230')
+        prefs = {
+            "download.default_directory": download_dir,
+            "download.prompt_for_download": False,
+            "download.directory_upgrade": True,
+            "safebrowsing.enabled": True
+        }
+        options.add_experimental_option("prefs", prefs)
+
+        # Create a new WebDriver instance
+        service = EdgeService()
+        driver = webdriver.Edge(service=service, options=options)
+
+        try:
+            print(f"Searching for keyword: {keyword}")
             driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
 
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ddlSelection")))
 
+            # Set search parameters
             search_type = driver.find_element(By.ID, "ddlSelection")
             search_type.send_keys("Contains")
 
@@ -95,36 +111,55 @@ def start_search(keywords, start_date):
             start_date_field.clear()
             start_date_field.send_keys(start_date)
 
+            # Click the search button
             search_button = driver.find_element(By.ID, "btnSearch")
             search_button.click()
 
-            WebDriverWait(driver, 10).until(lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)"))
+            # Wait for the results to load
+            WebDriverWait(driver, 10).until(
+                lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)")
+            )
 
-            time.sleep(1)
+            # Locate and click the "Export to CSV" button
+            export_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '//img[@title="Export to CSV"]'))
+            )
+            export_button.click()
 
-            html_content = driver.page_source
-            tree = html.fromstring(html_content)
-            table = tree.xpath('//table[@class="table table-striped table-responsive"]')
+            # Wait for the file to be downloaded
+            WebDriverWait(driver, 20).until(
+                lambda d: any(fname.endswith(".csv") for fname in os.listdir(download_dir))
+            )
 
-            if table:
-                rows = table[0].xpath('.//tr')[1:]  # Skip the header row
-                for row in rows:
-                    cells = row.xpath('.//td')
-                    if len(cells) >= 6:
-                        name = cells[0].text_content().strip() if cells[0].text_content().strip() else "N/A"
-                        ubi = cells[1].text_content().strip() if cells[1].text_content().strip() else "N/A"
-                        business_type = cells[2].text_content().strip() if cells[2].text_content().strip() else "N/A"
-                        address = cells[3].text_content().strip() if cells[3].text_content().strip() else "N/A"
-                        agent_name = cells[4].text_content().strip() if cells[4].text_content().strip() else "N/A"
-                        status = cells[5].text_content().strip() if cells[5].text_content().strip() else "N/A"
-                        business = Business(name, ubi, business_type, address, agent_name, status)
+            # Find the downloaded CSV file
+            csv_file = next(
+                (os.path.join(download_dir, fname) for fname in os.listdir(download_dir) if fname.endswith(".csv")),
+                None
+            )
+
+            if csv_file:
+                # Read and parse the CSV file
+                with open(csv_file, "r", newline="", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        business = Business(
+                            name=row.get("Name", "N/A"),
+                            ubi=row.get("UBI", "N/A"),
+                            business_type=row.get("Business Type", "N/A"),
+                            address=row.get("Address", "N/A"),
+                            agent_name=row.get("Agent Name", "N/A"),
+                            status=row.get("Status", "N/A"),
+                        )
                         businesses.append(business)
-                        # print(f"Added business: {business}")
+                        print(f"Added business: {business}")
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        driver.quit()
+                # Remove the CSV file after processing
+                os.remove(csv_file)
+
+        except Exception as e:
+            print(f"An error occurred while processing keyword '{keyword}': {e}")
+        finally:
+            driver.quit()
 
     return businesses
 
