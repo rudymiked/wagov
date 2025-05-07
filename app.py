@@ -6,7 +6,7 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from datetime import datetime
-import time
+import requests
 import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -70,98 +70,78 @@ def start_search(keywords, start_date):
     # Clear the businesses list before starting
     businesses = []
 
-    # Set up a directory for downloaded files
-    download_dir = os.path.join(os.getcwd(), "downloads")
-    os.makedirs(download_dir, exist_ok=True)
+    # API endpoint
+    api_url = "https://ccfs-api.prod.sos.wa.gov/api/BusinessSearch/GetAdvanceBusinessSearchList"
+
+    principal_headers = {
+        'Accept-Language': 'en-US,en;q=0.8,es-AR;q=0.5,es;q=0.3',
+        'Referer': 'https://ccfs.sos.wa.gov/',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', # this might be an issue
+        'Origin': 'https://ccfs.sos.wa.gov'
+    }
 
     for keyword in keywords:
-        # Configure WebDriver options for file download
-        options = webdriver.EdgeOptions()
-        options.add_argument('--headless')
-        options.add_argument('--disable-gpu')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument('--remote-debugging-port=9230')
-        prefs = {
-            "download.default_directory": download_dir,
-            "download.prompt_for_download": False,
-            "download.directory_upgrade": True,
-            "safebrowsing.enabled": True
+        print(f"Fetching data for keyword: {keyword}")
+
+        # Payload for the POST request
+        payload = {
+            "Type": "Agent",
+            "BusinessStatusID": 0,
+            "SearchEntityName": f"%{keyword}%",
+            "SearchType": "Contains",
+            "BusinessTypeID": 0,
+            "AgentName": "",
+            "PrincipalName": "",
+            "StartDateOfIncorporation": start_date,
+            "EndDateOfIncorporation": "",
+            "ExpirationDate": "",
+            "IsSearch": True,
+            "IsShowAdvanceSearch": True,
+            "AgentAddress[IsAddressSame]": False,
+            "AgentAddress[IsValidAddress]": False,
+            "AgentAddress[isUserNonCommercialRegisteredAgent]": False,
+            "AgentAddress[IsInvalidState]": False,
+            "AgentAddress[FullAddress]": ", WA, USA",
+            "AgentAddress[State]": "WA",
+            "AgentAddress[Country]": "USA",
+            "PrincipalAddress[IsAddressSame]": False,
+            "PrincipalAddress[IsValidAddress]": False,
+            "PrincipalAddress[isUserNonCommercialRegisteredAgent]": False,
+            "PrincipalAddress[IsInvalidState]": False,
+            "PrincipalAddress[FullAddress]": ", WA, USA",
+            "PrincipalAddress[State]": "",
+            "PrincipalAddress[Country]": "USA",
+            "PageID": 1,
+            "PageCount": 25,
         }
-        options.add_experimental_option("prefs", prefs)
 
-        # Create a new WebDriver instance
-        service = EdgeService()
-        driver = webdriver.Edge(service=service, options=options)
+        # Log the request details
+        print("POST Request Details:")
+        print(f"URL: {api_url}")
+        print(f"Headers: {principal_headers}")
+        print(f"Payload: {payload}")
 
-        try:
-            print(f"Searching for keyword: {keyword}")
-            driver.get("https://ccfs.sos.wa.gov/?_gl=1*wq7u93*_ga=MTA2NzA5NzA2LjE3MzYwNTA1NjI.*_ga_7B08VE04WV=MTczNjA1MDU2MS4xLjEuMTczNjA1MDY3Mi4wLjAuMA..#/AdvancedSearch")
+        # Send the POST request
+        response = requests.post(api_url, data=payload, headers=principal_headers)
 
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ddlSelection")))
-
-            # Set search parameters
-            search_type = driver.find_element(By.ID, "ddlSelection")
-            search_type.send_keys("Contains")
-
-            business_name = driver.find_element(By.ID, "txtOrgname")
-            business_name.clear()
-            business_name.send_keys(keyword)
-
-            start_date_field = driver.find_element(By.ID, "txtStartDateOfIncorporation")
-            start_date_field.clear()
-            start_date_field.send_keys(start_date)
-
-            # Click the search button
-            search_button = driver.find_element(By.ID, "btnSearch")
-            search_button.click()
-
-            # Wait for the results to load
-            WebDriverWait(driver, 10).until(
-                lambda d: d.find_element(By.CSS_SELECTOR, "table.table-striped tbody tr:not(.ng-hide)")
-            )
-
-            # Locate and click the "Export to CSV" button
-            export_button = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//img[@title="Export to CSV"]'))
-            )
-            export_button.click()
-
-            # Wait for the file to be downloaded
-            WebDriverWait(driver, 20).until(
-                lambda d: any(fname.endswith(".csv") for fname in os.listdir(download_dir))
-            )
-
-            # Find the downloaded CSV file
-            csv_file = next(
-                (os.path.join(download_dir, fname) for fname in os.listdir(download_dir) if fname.endswith(".csv")),
-                None
-            )
-
-            if csv_file:
-                # Read and parse the CSV file
-                with open(csv_file, "r", newline="", encoding="utf-8") as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        business = Business(
-                            name=row.get("Business Name", "N/A"),
-                            ubi=row.get("UBI#", "N/A"),
-                            business_type=row.get("Business Type", "N/A"),
-                            address=row.get("Principal Office Address", "N/A"),
-                            agent_name=row.get("Registered Agent Name", "N/A"),
-                            status=row.get("Status", "N/A"),
-                            ein=row.get("Nonprofit EIN", "N/A"),
-                        )
-                        businesses.append(business)
-                        print(f"Added business: {business}")
-
-                # Remove the CSV file after processing
-                os.remove(csv_file)
-
-        except Exception as e:
-            print(f"An error occurred while processing keyword '{keyword}': {e}")
-        finally:
-            driver.quit()
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Parse the JSON response
+            data = response.json()
+            for item in data:
+                business = Business(
+                    name=item.get("BusinessName", "N/A"),
+                    ubi=item.get("UBINumber", "N/A"),
+                    business_type=item.get("BusinessType", "N/A"),
+                    address=item.get("FullAddress", "N/A"),
+                    agent_name=item.get("AgentName", "N/A"),
+                    status=item.get("BusinessStatus", "N/A"),
+                    ein=item.get("BusinessID", "N/A"),
+                )
+                businesses.append(business)
+                print(f"Added business: {business}")
+        else:
+            print(f"Failed to fetch data for keyword '{keyword}'. Status code: {response.status_code}")
 
     return businesses
 
@@ -189,7 +169,7 @@ def index():
             print(f'Businesses: {businesses}')
             
             with open(csv_filepath, "w", newline='') as csvfile:
-                fieldnames = ['name', 'ubi', 'business_type', 'address', 'agent_name', 'status']
+                fieldnames = ['name', 'ubi', 'business_type', 'address', 'agent_name', 'status', 'ein']
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 writer.writeheader()
                 for business in businesses:
