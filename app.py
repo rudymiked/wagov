@@ -1,7 +1,5 @@
 import csv
-from lxml import html
 from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify
-from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
 import os
