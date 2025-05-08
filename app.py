@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import requests
 import os
+import time
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = os.urandom(24)
@@ -38,7 +39,7 @@ def start_search(keywords, start_date):
     principal_headers = {
         'Accept-Language': 'en-US,en;q=0.8,es-AR;q=0.5,es;q=0.3',
         'Referer': 'https://ccfs.sos.wa.gov/',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', # this might be an issue
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         'Origin': 'https://ccfs.sos.wa.gov'
     }
 
@@ -86,7 +87,6 @@ def start_search(keywords, start_date):
         # Send the POST request
         response = requests.post(api_url, data=payload, headers=principal_headers)
 
-        # Check if the request was successful
         if response.status_code == 200:
             # Parse the JSON response
             data = response.json()
@@ -102,8 +102,16 @@ def start_search(keywords, start_date):
                 )
                 businesses.append(business)
                 print(f"Added business: {business}")
+        elif response.status_code == 429:
+            # Handle rate-limiting
+            retry_after = int(response.headers.get("Retry-After", 1))  # Default to 1 second if not provided
+            print(f"Rate limit hit. Retrying after {retry_after} seconds...")
+            time.sleep(retry_after)
         else:
             print(f"Failed to fetch data for keyword '{keyword}'. Status code: {response.status_code}")
+
+        # Add a delay to avoid hitting the rate limit
+        time.sleep(1)  # Adjust the delay as needed (e.g., 1 second)
 
     return businesses
 
